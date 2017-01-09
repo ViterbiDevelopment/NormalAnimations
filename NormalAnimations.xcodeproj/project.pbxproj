@@ -18,6 +18,8 @@
 		371DEF0C1E222B9F0024784E /* pushVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DEF0B1E222B9F0024784E /* pushVC.swift */; };
 		37DA73671E23250100175CCA /* PopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA73661E23250100175CCA /* PopAnimation.swift */; };
 		37DA73691E23257F00175CCA /* PushAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA73681E23257F00175CCA /* PushAnimation.swift */; };
+		37DA73701E23785F00175CCA /* 55.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA736E1E23785F00175CCA /* 55.gif */; };
+		37DA73711E23785F00175CCA /* 66.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA736F1E23785F00175CCA /* 66.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		371DEF0B1E222B9F0024784E /* pushVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pushVC.swift; sourceTree = "<group>"; };
 		37DA73661E23250100175CCA /* PopAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimation.swift; sourceTree = "<group>"; };
 		37DA73681E23257F00175CCA /* PushAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushAnimation.swift; sourceTree = "<group>"; };
+		37DA736E1E23785F00175CCA /* 55.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 55.gif; sourceTree = "<group>"; };
+		37DA736F1E23785F00175CCA /* 66.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 66.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 				371DEEDC1E1F2EFD0024784E /* Assets.xcassets */,
 				371DEEDE1E1F2EFD0024784E /* LaunchScreen.storyboard */,
 				371DEEE11E1F2EFD0024784E /* Info.plist */,
+				37DA736D1E23785000175CCA /* githubPhoto */,
 			);
 			path = NormalAnimations;
 			sourceTree = "<group>";
@@ -151,6 +156,15 @@
 				37DA73681E23257F00175CCA /* PushAnimation.swift */,
 			);
 			path = UIViewControllerAnimatedTransitioning;
+			sourceTree = "<group>";
+		};
+		37DA736D1E23785000175CCA /* githubPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				37DA736E1E23785F00175CCA /* 55.gif */,
+				37DA736F1E23785F00175CCA /* 66.gif */,
+			);
+			path = githubPhoto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +277,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37DA73701E23785F00175CCA /* 55.gif in Resources */,
 				371DEEE01E1F2EFD0024784E /* LaunchScreen.storyboard in Resources */,
+				37DA73711E23785F00175CCA /* 66.gif in Resources */,
 				371DEEDD1E1F2EFD0024784E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
