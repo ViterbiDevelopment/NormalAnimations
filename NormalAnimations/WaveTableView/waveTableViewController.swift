@@ -137,7 +137,6 @@ extension UITableView{
         
         let type = array[1] as! animationType
         
-        print("typw-----------\(type.rawValue)")
         
         let cell = cellForRow(at: path)
 

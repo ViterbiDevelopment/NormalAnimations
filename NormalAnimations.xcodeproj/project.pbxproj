@@ -19,6 +19,9 @@
 		37DA73671E23250100175CCA /* PopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA73661E23250100175CCA /* PopAnimation.swift */; };
 		37DA73691E23257F00175CCA /* PushAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA73681E23257F00175CCA /* PushAnimation.swift */; };
 		37DA73FE1E24D4DF00175CCA /* waveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA73FD1E24D4DF00175CCA /* waveTableViewController.swift */; };
+		37DA74021E24EB1300175CCA /* 33.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA73FF1E24EB1300175CCA /* 33.gif */; };
+		37DA74031E24EB1300175CCA /* 11.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA74001E24EB1300175CCA /* 11.gif */; };
+		37DA74041E24EB1300175CCA /* 22.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA74011E24EB1300175CCA /* 22.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		37DA73661E23250100175CCA /* PopAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimation.swift; sourceTree = "<group>"; };
 		37DA73681E23257F00175CCA /* PushAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushAnimation.swift; sourceTree = "<group>"; };
 		37DA73FD1E24D4DF00175CCA /* waveTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = waveTableViewController.swift; sourceTree = "<group>"; };
+		37DA73FF1E24EB1300175CCA /* 33.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 33.gif; sourceTree = "<group>"; };
+		37DA74001E24EB1300175CCA /* 11.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 11.gif; sourceTree = "<group>"; };
+		37DA74011E24EB1300175CCA /* 22.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 22.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,9 @@
 				371DEF041E1F37D10024784E /* UIViewControllerAnimatedTransitioning */,
 				37DA73FC1E24D4BF00175CCA /* WaveTableView */,
 				371DEEDC1E1F2EFD0024784E /* Assets.xcassets */,
+				37DA73FF1E24EB1300175CCA /* 33.gif */,
+				37DA74001E24EB1300175CCA /* 11.gif */,
+				37DA74011E24EB1300175CCA /* 22.gif */,
 				371DEEDE1E1F2EFD0024784E /* LaunchScreen.storyboard */,
 				371DEEE11E1F2EFD0024784E /* Info.plist */,
 			);
@@ -274,6 +283,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37DA74041E24EB1300175CCA /* 22.gif in Resources */,
+				37DA74031E24EB1300175CCA /* 11.gif in Resources */,
+				37DA74021E24EB1300175CCA /* 33.gif in Resources */,
 				371DEEE01E1F2EFD0024784E /* LaunchScreen.storyboard in Resources */,
 				371DEEDD1E1F2EFD0024784E /* Assets.xcassets in Resources */,
 			);
