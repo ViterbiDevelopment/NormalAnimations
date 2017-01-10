@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
         case cell
     }
 
-    let animations = ["CATransform3D","UIViewControllerAnimatedTransitioning"]
+    let animations = ["CATransform3D","UIViewControllerAnimatedTransitioning","wave TableView"]
     
     
     override func viewDidLoad() {
@@ -66,12 +66,17 @@ class ViewController: UITableViewController {
         }
         if indexPath.row == 1{
         
-        
             let transformVC = VCAnimatedTransitioning()
             
             navigationController?.pushViewController(transformVC, animated: true)
             
         
+        }
+        if indexPath.row == 2 {
+            
+            let waveTB = waveTableViewController()
+            
+            navigationController?.pushViewController(waveTB, animated: true)
         }
         
         

@@ -78,13 +78,16 @@ class TransformviewController: UIViewController {
         
         weak var weakSelf = self
         
-        UIView.animate(withDuration: 0.6) {
-            
+        
+        UIView.animate(withDuration: 0.6, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             weakSelf?.maskView.alpha = 0.5
             
-               weakSelf?.popView.frame = CGRect(x: 0, y: (weakSelf?.screenH)! - 300, width: (weakSelf?.screenW)!, height: 300)
-    
-        }
+            weakSelf?.popView.frame = CGRect(x: 0, y: (weakSelf?.screenH)! - 300, width: (weakSelf?.screenW)!, height: 300)
+
+            
+        }, completion: nil)
+        
+        
         UIView.animate(withDuration: 0.35, animations: {
             
              weakSelf?.navigationController?.view.layer.transform = (weakSelf?.transform1())!
@@ -109,13 +112,21 @@ class TransformviewController: UIViewController {
         weak var weakSelf = self
         
         
-        UIView.animate(withDuration: 0.6) {
+        UIView.animate(withDuration: 0.6, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
             
             weakSelf?.maskView.alpha = 0
             
             weakSelf?.popView.frame = CGRect.init(x: 0, y: (weakSelf?.screenH)!, width: (weakSelf?.screenW)!, height: 300)
             
-        }
+        }, completion: nil)
+        
+//        UIView.animate(withDuration: 0.6) {
+//            
+//            weakSelf?.maskView.alpha = 0
+//            
+//            weakSelf?.popView.frame = CGRect.init(x: 0, y: (weakSelf?.screenH)!, width: (weakSelf?.screenW)!, height: 300)
+//            
+//        }
         
        
         UIView.animate(withDuration: 0.25, animations: {
