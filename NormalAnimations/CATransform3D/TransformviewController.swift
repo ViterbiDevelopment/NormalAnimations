@@ -76,13 +76,12 @@ class TransformviewController: UIViewController {
     func btnClick()  {
         
         
-        weak var weakSelf = self
         
         
         UIView.animate(withDuration: 0.6, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            weakSelf?.maskView.alpha = 0.5
+            self.maskView.alpha = 0.5
             
-            weakSelf?.popView.frame = CGRect(x: 0, y: (weakSelf?.screenH)! - 300, width: (weakSelf?.screenW)!, height: 300)
+            self.popView.frame = CGRect(x: 0, y: self.screenH - 300, width: self.screenW, height: 300)
 
             
         }, completion: nil)
@@ -90,14 +89,19 @@ class TransformviewController: UIViewController {
         
         UIView.animate(withDuration: 0.35, animations: {
             
-             weakSelf?.navigationController?.view.layer.transform = (weakSelf?.transform1())!
+            self.navigationController?.view.layer.transform = self.transform1()
+            
+            
             
         }) { (finish) in
             
            
-            UIView.animate(withDuration: 0.3, animations: { 
+            UIView.animate(withDuration: 0.3, animations: {
                 
-                 weakSelf?.navigationController?.view.layer.transform = (weakSelf?.transform2())!
+                
+                self.navigationController?.view.layer.transform = self.transform2()
+                
+
                 
             })
         }
@@ -109,36 +113,33 @@ class TransformviewController: UIViewController {
     
     func closeBtn() {
         
-        weak var weakSelf = self
         
         
         UIView.animate(withDuration: 0.6, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
             
-            weakSelf?.maskView.alpha = 0
+            self.maskView.alpha = 0
             
-            weakSelf?.popView.frame = CGRect.init(x: 0, y: (weakSelf?.screenH)!, width: (weakSelf?.screenW)!, height: 300)
+            self.popView.frame = CGRect.init(x: 0, y: self.screenH, width: self.screenW, height: 300)
             
         }, completion: nil)
         
-//        UIView.animate(withDuration: 0.6) {
-//            
-//            weakSelf?.maskView.alpha = 0
-//            
-//            weakSelf?.popView.frame = CGRect.init(x: 0, y: (weakSelf?.screenH)!, width: (weakSelf?.screenW)!, height: 300)
-//            
-//        }
+
         
        
         UIView.animate(withDuration: 0.25, animations: {
             
-            weakSelf?.navigationController?.view.layer.transform = (weakSelf?.transform1())!
             
+            self.navigationController?.view.layer.transform = self.transform1()
+            
+           
         }) { (finish) in
             
                         
             UIView.animate(withDuration: 0.4, animations: {
               
-                weakSelf?.navigationController?.view.layer.transform = CATransform3DIdentity
+                
+                self.navigationController?.view.layer.transform = CATransform3DIdentity
+                
             })
             
             
@@ -153,7 +154,7 @@ class TransformviewController: UIViewController {
         
         form1.m34 = -1/900
        
-        form1 = CATransform3DRotate(form1, CGFloat(12*M_PI / 180), 1, 0, 0)
+        form1 = CATransform3DRotate(form1, CGFloat(12*Double.pi / 180), 1, 0, 0)
         
         //这个要平移，不然会切掉弹出来的视图
       //  form1 = CATransform3DTranslate(form1, 0, 0, -85)
@@ -178,7 +179,7 @@ class TransformviewController: UIViewController {
     
     deinit {
         
-        
+        print("deinit")
     }
 
 }
