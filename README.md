@@ -6,3 +6,5 @@
 ![image](https://github.com/ViterbiDevelopment/NormalAnimations/blob/master/NormalAnimations/22.gif)  
 ### 以前淘宝购物车动画，现在废弃不用了，还是有学习的意义。
 ![image](https://github.com/ViterbiDevelopment/NormalAnimations/blob/master/NormalAnimations/33.gif)  
+### 一种小卡片翻页效果
+![image](https://github.com/ViterbiDevelopment/NormalAnimations/blob/master/NormalAnimations/Untitled.gif)
