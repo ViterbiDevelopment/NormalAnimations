@@ -22,6 +22,8 @@
 		37DA74021E24EB1300175CCA /* 33.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA73FF1E24EB1300175CCA /* 33.gif */; };
 		37DA74031E24EB1300175CCA /* 11.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA74001E24EB1300175CCA /* 11.gif */; };
 		37DA74041E24EB1300175CCA /* 22.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA74011E24EB1300175CCA /* 22.gif */; };
+		4BAA550C20CF9C54006525AB /* CardViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAA550B20CF9C54006525AB /* CardViewAnimationController.swift */; };
+		4BAA550E20CF9C61006525AB /* CardAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAA550D20CF9C61006525AB /* CardAnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		37DA73FF1E24EB1300175CCA /* 33.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 33.gif; sourceTree = "<group>"; };
 		37DA74001E24EB1300175CCA /* 11.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 11.gif; sourceTree = "<group>"; };
 		37DA74011E24EB1300175CCA /* 22.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 22.gif; sourceTree = "<group>"; };
+		4BAA550B20CF9C54006525AB /* CardViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewAnimationController.swift; sourceTree = "<group>"; };
+		4BAA550D20CF9C61006525AB /* CardAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 				371DEF031E1F37BD0024784E /* CATransform3D */,
 				371DEF041E1F37D10024784E /* UIViewControllerAnimatedTransitioning */,
 				37DA73FC1E24D4BF00175CCA /* WaveTableView */,
+				4BAA550A20CF9C37006525AB /* CardAnimation */,
 				371DEEDC1E1F2EFD0024784E /* Assets.xcassets */,
 				37DA73FF1E24EB1300175CCA /* 33.gif */,
 				37DA74001E24EB1300175CCA /* 11.gif */,
@@ -171,6 +176,15 @@
 				37DA73FD1E24D4DF00175CCA /* waveTableViewController.swift */,
 			);
 			path = WaveTableView;
+			sourceTree = "<group>";
+		};
+		4BAA550A20CF9C37006525AB /* CardAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				4BAA550B20CF9C54006525AB /* CardViewAnimationController.swift */,
+				4BAA550D20CF9C61006525AB /* CardAnimationView.swift */,
+			);
+			path = CardAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BAA550C20CF9C54006525AB /* CardViewAnimationController.swift in Sources */,
 				37DA73671E23250100175CCA /* PopAnimation.swift in Sources */,
 				371DEF0C1E222B9F0024784E /* pushVC.swift in Sources */,
 				37DA73FE1E24D4DF00175CCA /* waveTableViewController.swift in Sources */,
@@ -320,6 +335,7 @@
 				371DEED81E1F2EFD0024784E /* ViewController.swift in Sources */,
 				371DEED61E1F2EFD0024784E /* AppDelegate.swift in Sources */,
 				37DA73691E23257F00175CCA /* PushAnimation.swift in Sources */,
+				4BAA550E20CF9C61006525AB /* CardAnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
