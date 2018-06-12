@@ -24,6 +24,7 @@
 		37DA74041E24EB1300175CCA /* 22.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37DA74011E24EB1300175CCA /* 22.gif */; };
 		4BAA550C20CF9C54006525AB /* CardViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAA550B20CF9C54006525AB /* CardViewAnimationController.swift */; };
 		4BAA550E20CF9C61006525AB /* CardAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAA550D20CF9C61006525AB /* CardAnimationView.swift */; };
+		4BAA551020CFA3A4006525AB /* Untitled.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4BAA550F20CFA3A3006525AB /* Untitled.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		37DA74011E24EB1300175CCA /* 22.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 22.gif; sourceTree = "<group>"; };
 		4BAA550B20CF9C54006525AB /* CardViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewAnimationController.swift; sourceTree = "<group>"; };
 		4BAA550D20CF9C61006525AB /* CardAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardAnimationView.swift; sourceTree = "<group>"; };
+		4BAA550F20CFA3A3006525AB /* Untitled.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Untitled.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				37DA73FF1E24EB1300175CCA /* 33.gif */,
 				37DA74001E24EB1300175CCA /* 11.gif */,
 				37DA74011E24EB1300175CCA /* 22.gif */,
+				4BAA550F20CFA3A3006525AB /* Untitled.gif */,
 				371DEEDE1E1F2EFD0024784E /* LaunchScreen.storyboard */,
 				371DEEE11E1F2EFD0024784E /* Info.plist */,
 			);
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37DA74041E24EB1300175CCA /* 22.gif in Resources */,
+				4BAA551020CFA3A4006525AB /* Untitled.gif in Resources */,
 				37DA74031E24EB1300175CCA /* 11.gif in Resources */,
 				37DA74021E24EB1300175CCA /* 33.gif in Resources */,
 				371DEEE01E1F2EFD0024784E /* LaunchScreen.storyboard in Resources */,
