@@ -18,13 +18,9 @@ class VCAnimatedTransitioning: UIViewController,UINavigationControllerDelegate,U
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.groupTableViewBackground
-        
         navigationController?.delegate = self
-        
         configureBtn()
-        
         configureGesture()
-        
     }
     
     func configureGesture() {
@@ -32,14 +28,8 @@ class VCAnimatedTransitioning: UIViewController,UINavigationControllerDelegate,U
         //handleSwipeFromLeftEdge
         
         pan = UIPanGestureRecognizer.init(target: self, action: #selector(handleSwipeFromLeftEdge(gesture:)))
-        
         pan.delegate = self
-        
-     
         navigationController?.view.addGestureRecognizer(pan)
-        
-        
-        
     }
     
 
@@ -53,12 +43,9 @@ class VCAnimatedTransitioning: UIViewController,UINavigationControllerDelegate,U
         click.backgroundColor = UIColor.red
         
         click.addTarget(self, action: #selector(btnClick(sender:)), for: UIControlEvents.touchUpInside)
-        
-      
         click.setTitle("点我", for: .normal)
-        
         view.addSubview(click)
-        
+
     }
     
     func handleSwipeFromLeftEdge(gesture:UIScreenEdgePanGestureRecognizer)  {
@@ -91,63 +78,37 @@ class VCAnimatedTransitioning: UIViewController,UINavigationControllerDelegate,U
             }
             
             interactionController = nil
-            
-            
         }
-        
-        
     }
     
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
     
-    
         if operation == UINavigationControllerOperation.push {
-            
             return PushAnimation()
         }
         
         if operation == UINavigationControllerOperation.pop {
-            
             return PopAnimation()
         }
-        
         return nil
-    
     }
     
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         
         return interactionController
     }
-    
-    
-    
+  
     func btnClick(sender:UIButton){
-        
-    
-        
         let push = pushVC()
-        
         navigationController?.pushViewController(push, animated: true)
-        
-        
     }
     
     deinit {
-        
-        print("我被释放了")
-
-        
+      
         navigationController?.delegate = nil
-        
         pan.removeTarget(self, action: #selector(handleSwipeFromLeftEdge(gesture:)))
-        
-        
         pan = nil
-        
-        
-        
     }
     
     

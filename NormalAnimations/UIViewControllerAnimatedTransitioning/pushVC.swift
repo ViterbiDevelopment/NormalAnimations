@@ -14,14 +14,7 @@ class pushVC: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.yellow
-       
-        
-        
     }
-
-   
-    
-
 
 
 }

@@ -12,11 +12,8 @@ class TransformviewController: UIViewController {
     
     
     var popView:UIView!
-    
     var maskView:UIView!
-    
     let screenW = UIScreen.main.bounds.width
-    
     let screenH = UIScreen.main.bounds.height
 
     override func viewDidLoad() {
@@ -25,8 +22,6 @@ class TransformviewController: UIViewController {
         title = "CATransform3D"
         
         view.backgroundColor = UIColor.white
-        
-        
         configureBtn()
         
         maskView = UIView.init(frame: CGRect(x: 0, y: 0, width: screenW, height: screenH))
@@ -43,18 +38,13 @@ class TransformviewController: UIViewController {
         popView.layer.transform = CATransform3DTranslate(popTransLate, 0, 0, 85)
         
         UIApplication.shared.keyWindow?.addSubview(popView)
-    
         let closeBtn = UIButton.init(type: .system)
-        
         closeBtn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        
         closeBtn.addTarget(self, action: #selector(TransformviewController.closeBtn), for: .touchUpInside)
-
         closeBtn.setTitle("关闭", for: .normal)
         
         popView.addSubview(closeBtn)
     
-       
     }
     
     func configureBtn()  {
@@ -74,47 +64,26 @@ class TransformviewController: UIViewController {
     }
     
     func btnClick()  {
-        
-        
-        
-        
+      
         UIView.animate(withDuration: 0.6, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.maskView.alpha = 0.5
-            
             self.popView.frame = CGRect(x: 0, y: self.screenH - 300, width: self.screenW, height: 300)
-
-            
         }, completion: nil)
-        
-        
+      
         UIView.animate(withDuration: 0.35, animations: {
             
             self.navigationController?.view.layer.transform = self.transform1()
             
-            
-            
         }) { (finish) in
-            
-           
             UIView.animate(withDuration: 0.3, animations: {
-                
-                
                 self.navigationController?.view.layer.transform = self.transform2()
-                
-
-                
+              
             })
         }
-      
-        
-        
     }
-    
-    
+  
     func closeBtn() {
-        
-        
-        
+      
         UIView.animate(withDuration: 0.6, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
             
             self.maskView.alpha = 0
@@ -122,30 +91,17 @@ class TransformviewController: UIViewController {
             self.popView.frame = CGRect.init(x: 0, y: self.screenH, width: self.screenW, height: 300)
             
         }, completion: nil)
-        
-
-        
-       
+      
         UIView.animate(withDuration: 0.25, animations: {
-            
-            
             self.navigationController?.view.layer.transform = self.transform1()
-            
-           
+          
         }) { (finish) in
-            
-                        
+          
             UIView.animate(withDuration: 0.4, animations: {
-              
-                
                 self.navigationController?.view.layer.transform = CATransform3DIdentity
                 
             })
-            
-            
         }
-        
-        
     }
     
     func transform1()->CATransform3D  {
@@ -163,22 +119,15 @@ class TransformviewController: UIViewController {
     }
     
     func transform2() ->CATransform3D {
-        
+
         var form2 = CATransform3DIdentity
-        
         form2.m34 = transform1().m34
-        
         form2 = CATransform3DTranslate(form2, 0, -10, 0)
-        
         form2 = CATransform3DScale(form2, 0.9, 0.9, 1)
-        
         return form2
-        
-        
     }
     
     deinit {
-        
         print("deinit")
     }
 
