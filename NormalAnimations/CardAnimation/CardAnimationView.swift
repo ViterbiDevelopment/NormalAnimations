@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIView{
+private extension UIView{
   var card_x : CGFloat{
     get{
       return self.frame.origin.x
@@ -55,28 +55,6 @@ extension UIView{
       frame                 = tmpFrame
     }
   }
-  var card_CenterX:CGFloat{
-    
-    get{
-      return self.center.x
-    }set(newValue){
-      var tempCenter : CGPoint = self.center
-      tempCenter.x             = newValue
-      self.center              = tempCenter
-    }
-    
-  }
-  var card_CenterY:CGFloat{
-    
-    get{
-      return self.center.y
-    }
-    set(newValue){
-      var tempCenter:CGPoint = self.center
-      tempCenter.y           = newValue
-      self.center            = tempCenter
-    }
-  }
   
 }
 
@@ -93,22 +71,33 @@ protocol CardAnimationViewDelegate:class {
 }
 
 class CardAnimationView: UIView {
-
+  
+  enum AnimationSpeedRaw:Double {
+    case slow = 0.25
+    case fast = 0.15
+  }
+  
+  
   var isNeedRemove:Bool = false
   var transformArray:[UIView]!
   
   var cardAnimationDistance:Int = 50 //每个卡片 等比例距离
-  var cardAnimationScale:Double = 0.05 //每个卡片的 等比例缩小系数
+  var cardAnimationScale:Double = 0.03 //每个卡片的 等比例缩小系数
   
   var isAnimation:Bool = false //是否正在动画
-  
-  weak var delegate:CardAnimationViewDelegate?
+  var animationSpeed = AnimationSpeedRaw.slow
   
   var upGes:UISwipeGestureRecognizer?
   var downGes:UISwipeGestureRecognizer?
   
+  weak var delegate:CardAnimationViewDelegate?
+  
   convenience init(frame: CGRect,transfromSubviews:[UIView]!) {
     self.init(frame: frame)
+    
+    let distance = (frame.height - transfromSubviews.first!.card_height) * 0.5
+    
+    cardAnimationDistance = Int(CGFloat(cardAnimationScale) * transfromSubviews.first!.card_height + distance)
     
     transformArray = transfromSubviews.reversed()
     
@@ -122,10 +111,10 @@ class CardAnimationView: UIView {
         addSubview(transformSub)
         transformSub.alpha = CGFloat(1 - Double(j)*0.4)
         transformSub.frame = CGRect.init(x: (card_width - transformSub.card_width)/2.0,
-                                          y: CGFloat(cardAnimationDistance*j),
-                                            width: transformSub.card_width,
-                                            height:transformSub.card_height)
-//        transformSub.center
+                                         y: CGFloat(cardAnimationDistance*j),
+                                         width: transformSub.card_width,
+                                         height:transformSub.card_height)
+        
         transformSub.transform = CGAffineTransform.init(scaleX: CGFloat(1 - Double(j)*cardAnimationScale), y: CGFloat(1 - Double(j)*cardAnimationScale))
         
       }else{
@@ -138,7 +127,6 @@ class CardAnimationView: UIView {
                                          width: transformSub.card_width,
                                          height:transformSub.card_height)
         transformSub.transform = CGAffineTransform.init(scaleX: CGFloat(1 - cardAnimationScale * 2), y: CGFloat(1 - cardAnimationScale * 2))
-
       }
     }
     
@@ -162,12 +150,12 @@ class CardAnimationView: UIView {
   }
   
   @objc func upGesSelector() {
-  
+    
     nextAnimation()
     
   }
   
-  @objc func nextAnimation() {
+  func nextAnimation() {
     
     if isAnimation {
       return
@@ -202,7 +190,7 @@ class CardAnimationView: UIView {
     
     delegate?.CardAnimationShouldWill(with: self.transformArray)
     // 当前控件向下移动五个像素
-    UIView.animate(withDuration: 0.25, animations: {
+    UIView.animate(withDuration: animationSpeed.rawValue, animations: {
       
       transformView?.card_y = (transformView?.card_y)! + 5
       
@@ -210,7 +198,7 @@ class CardAnimationView: UIView {
       
       
       // 然后向上移动 并且 3d变换
-      UIView.animate(withDuration: 0.25 * 2, animations: {
+      UIView.animate(withDuration: self.animationSpeed.rawValue * 2, animations: {
         
         transformView?.card_y = (transformView?.card_y)! - 75
         var form1 = CATransform3DIdentity
@@ -230,7 +218,7 @@ class CardAnimationView: UIView {
       }
       
       // 下一控件 复原，下下个控件 变为0.6并且缩放
-      UIView.animate(withDuration: 0.25 * 2, animations: {
+      UIView.animate(withDuration: self.animationSpeed.rawValue * 2, animations: {
         
         nextTransformView?.alpha = 1
         nextTransformView?.transform = CGAffineTransform.init(scaleX: 1, y: 1)
@@ -239,7 +227,7 @@ class CardAnimationView: UIView {
         if nextLocation != self.transformArray.count - 1{
           
           let lable = self.transformArray[nextLocation + 1]
-          lable.transform = CGAffineTransform.init(scaleX: 0.97, y: 0.97)
+          lable.transform = CGAffineTransform.init(scaleX: CGFloat(1-self.cardAnimationScale), y: CGFloat(1-self.cardAnimationScale))
           lable.card_y = lable.card_y - CGFloat(self.cardAnimationDistance)
           lable.alpha = 0.6
           
@@ -285,7 +273,7 @@ class CardAnimationView: UIView {
     
     delegate?.CardAnimationShouldWill(with: self.transformArray)
     // 上一个 动画的复原
-    UIView.animate(withDuration: 2*0.25, animations: {
+    UIView.animate(withDuration: 2*animationSpeed.rawValue, animations: {
       
       var form1 = CATransform3DIdentity
       form1.m34 = -1/900
@@ -297,7 +285,7 @@ class CardAnimationView: UIView {
       
     }) { (flag) in
       
-      UIView.animate(withDuration: 0.1, animations: {
+      UIView.animate(withDuration: self.animationSpeed.rawValue, animations: {
         
         previous?.card_y = (previous?.card_y)! - 5
         
@@ -310,12 +298,12 @@ class CardAnimationView: UIView {
     }
     
     // 当前动画的 透明质变为 0.6
-    UIView.animate(withDuration: 2*0.25, animations: {
+    UIView.animate(withDuration: 2*animationSpeed.rawValue, animations: {
       
       current?.alpha = 0.6
       
       current?.card_y = (current?.card_y)! + CGFloat(self.cardAnimationDistance)
-      current?.transform = CGAffineTransform.init(scaleX: 0.97, y: 0.97)
+      current?.transform = CGAffineTransform.init(scaleX: CGFloat(1-self.cardAnimationScale), y: CGFloat(1-self.cardAnimationScale))
       
       //// 下一个控件动画的 透明质变为 0.2
       if previousLocation + 2 >= self.transformArray.count{
@@ -323,18 +311,158 @@ class CardAnimationView: UIView {
       }
       let lable = self.transformArray[previousLocation + 2]
       lable.alpha = 0.2
-      lable.transform = CGAffineTransform.init(scaleX: 0.94, y: 0.94)
+      lable.transform = CGAffineTransform.init(scaleX: CGFloat(1-2*self.cardAnimationScale), y: CGFloat(1-2*self.cardAnimationScale))
       lable.card_y = lable.card_y + CGFloat(self.cardAnimationDistance)
       
     }, completion: nil)
     
-
+    
+    
+  }
+  
+  //跳转到索引值的界面
+  func jumpAnimation(with index:Int) {
+    
+    
+    if index > self.transformArray.count - 1{
+      return
+    }
+    
+    var currentIndex = 0
+    for i in 0..<self.transformArray.count {
+      
+      let sub = self.transformArray[i]
+      if sub.alpha == 1.0{
+        currentIndex = i
+        break
+      }
+    }
+    
+    if currentIndex == index{
+      return
+    }
+    
+    if currentIndex - index == 1 {
+      previousAnimation()
+      return
+    }
+    if index - currentIndex == 1 {
+      nextAnimation()
+      return
+    }
+    
+    if isAnimation {
+      return
+    }
+    isAnimation = true
+    
+    var isNext = false
+    
+    //当前页面索引 大于 需要跳转的页面 往前饭
+    if currentIndex > index {
+      
+      isNext = false
+      
+      for i in (index + 1)..<self.transformArray.count{
+        
+        let sub = self.transformArray[i]
+        if sub.alpha != 0.2{
+          var form1 = CATransform3DIdentity
+          form1.m34 = -1/900
+          form1 = CATransform3DRotate(form1, 0, 1, 0, 0)
+          sub.layer.transform = form1
+          
+          sub.transform = CGAffineTransform.init(scaleX: CGFloat(1-2*self.cardAnimationScale), y: CGFloat(1-2*self.cardAnimationScale))
+          sub.card_y = CGFloat(2*self.cardAnimationDistance)
+          sub.alpha = 0.2
+        }
+      }
+      
+    }else{
+      
+      isNext = true
+      
+      for i in 0..<index{
+        let sub = self.transformArray[i]
+        if sub.alpha != 0{
+          sub.alpha = 0
+          sub.card_y = -75
+          sub.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+          var form1 = CATransform3DIdentity
+          form1.m34 = -1/900
+          form1 = CATransform3DRotate(form1, CGFloat(30*Double.pi / 180), 1, 0, 0)
+          sub.layer.transform = form1
+        }
+        
+      }
+      
+    }
+    
+    //跳转到当前页
+    let currentView = self.transformArray[index]
+    
+    delegate?.CardAnimationShouldWill(with: self.transformArray)
+    
+    UIView.animate(withDuration: 2*animationSpeed.rawValue, animations: {
+      
+      if !isNext{
+        var form1 = CATransform3DIdentity
+        form1.m34 = -1/900
+        form1 = CATransform3DRotate(form1, 0, 1, 0, 0)
+        currentView.layer.transform = form1
+      }
+      
+      currentView.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+      currentView.card_y = 0
+      currentView.alpha = 1
+      
+    }) { (flag) in
+      
+      self.isAnimation = false
+      self.delegate?.CardAnimationViewFinish(with: self.transformArray, currentSub: currentView)
+    }
+    
+    if index + 1 > self.transformArray.count - 1 {
+      return
+    }
+    
+    let nextView = self.transformArray[index + 1]
+    
+    UIView.animate(withDuration: 2*animationSpeed.rawValue) {
+      
+      if !isNext{
+        var form1 = CATransform3DIdentity
+        form1.m34 = -1/900
+        form1 = CATransform3DRotate(form1, 0, 1, 0, 0)
+        nextView.layer.transform = form1
+      }
+      nextView.transform = CGAffineTransform.init(scaleX: CGFloat(1-self.cardAnimationScale), y: CGFloat(1-self.cardAnimationScale))
+      nextView.card_y = CGFloat(self.cardAnimationDistance)
+      nextView.alpha = 0.6
+    }
+    
+    if index + 2 > self.transformArray.count - 1{
+      return
+    }
+    
+    let nextnextView = self.transformArray[index + 2]
+    UIView.animate(withDuration: 2*animationSpeed.rawValue) {
+      
+      if !isNext{
+        var form1 = CATransform3DIdentity
+        form1.m34 = -1/900
+        form1 = CATransform3DRotate(form1, 0, 1, 0, 0)
+        nextnextView.layer.transform = form1
+        
+      }
+      nextnextView.transform = CGAffineTransform.init(scaleX: CGFloat(1-2*self.cardAnimationScale), y: CGFloat(1-2*self.cardAnimationScale))
+      nextnextView.card_y = CGFloat(2*self.cardAnimationDistance)
+      nextnextView.alpha = 0.2
+    }
     
   }
   
   func deleteCurrentAnimation() {
-    
-    
     
     let isLast = self.transformArray.last!.alpha == 1
     
@@ -354,7 +482,7 @@ class CardAnimationView: UIView {
       pre.layer.transform = form1
       pre.frame = self.transformArray.last!.frame
       
-      UIView.animate(withDuration: 0.25, animations: {
+      UIView.animate(withDuration: animationSpeed.rawValue, animations: {
         pre.alpha = 1
         self.transformArray.last!.alpha = 0
         
@@ -380,6 +508,4 @@ class CardAnimationView: UIView {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-
 }
